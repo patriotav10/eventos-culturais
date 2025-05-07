@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Alunos</title>
+</head>
+
+<body>
+    <% if(aluno != undefined){ %>
+        <div> Nome <%= aluno.nome %></div>
+        <div> Matricula <%= aluno.matricula %></div>
+        <div> Curso <%= aluno.curso %></div>
+
+    <% } else{ %>
+        <div>
+            Aluno nao encontrado
+        </div>
+    <% } %>
+
+</body>
+
+
+
+</html>
