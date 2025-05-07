@@ -1,0 +1,42 @@
+<%- include("../partials/menu") %>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+    
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastrar Evento</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container mt-5">
+    <h2 class="mb-4">Cadastro de Evento</h2>
+
+      <% if (sucesso) { %>
+        <div class="alert alert-success">
+          Evento cadastrado com sucesso!
+        </div>
+      <% } %>
+    
+    <form action="/eventos" method="POST">
+      <div class="mb-3">
+        <label for="nome" class="form-label">Nome do Evento</label>
+        <input type="text" class="form-control" id="nome" name="nome" required>
+      </div>
+      <div class="mb-3">
+        <label for="local" class="form-label">Local</label>
+        <input type="text" class="form-control" id="local" name="local" required>
+      </div>
+      <div class="mb-3">
+        <label for="data" class="form-label">Data</label>
+        <input type="date" class="form-control" id="data" name="data" required>
+      </div>
+      <button type="submit" class="btn btn-success">Cadastrar</button>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

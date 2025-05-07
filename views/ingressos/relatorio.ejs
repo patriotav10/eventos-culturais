@@ -1,0 +1,43 @@
+<%- include("../partials/menu") %>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Relatório de Ingressos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="mb-4">Ingressos Cadastrados</h1>
+
+    <% if (ingressos.length > 0) { %>
+    <table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+        <th>Cliente</th>
+        <th>Evento</th>
+        <th>Valor</th>
+        <th>Informaçoes Completas</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% ingressos.forEach(ingresso => { %>
+        <tr>
+            <td><%= ingresso.cliente.nome %></td>
+            <td><%= ingresso.evento.nome %></td>
+            <td>R$ <%= ingresso.valor.toFixed(2) %></td>
+            <td>
+            <a href="/ingressos/detalhar/<%= ingresso._id %>" class="btn btn-primary btn-sm">Detalhar</a>
+            </td>
+        </tr>
+        <% }); %>
+        </tbody>
+    </table>    
+  <% } %>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

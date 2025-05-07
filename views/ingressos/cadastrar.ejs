@@ -1,0 +1,58 @@
+<%- include("../partials/menu") %>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastrar Ingresso</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="container mt-5">
+    <h2 class="mb-4">Cadastro do Ingresso</h2>
+
+    <% if (sucesso) { %>
+      <div class="alert alert-success">
+        Ingresso cadastrado com sucesso!
+      </div>
+    <% } %>
+
+    <form action="/ingressos" method="POST">
+      <div class="mb-3">
+        <label for="cliente" class="form-label">Cliente</label>
+        <select name="cliente" id="cliente" class="form-select" required>
+          <% clientes.forEach(cliente => { %>
+            <option value="<%= cliente._id %>">Nome: <%= cliente.nome %> - CPF: <%= cliente.cpf %></option>
+          <% }) %>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="evento" class="form-label">Evento</label>
+        <select name="evento" id="evento" class="form-select" required>
+          <% eventos.forEach(evento => { %>
+            <option value="<%= evento._id %>">Nome: <%= evento.nome %> - Local: <%= evento.local %></option>
+          <% }) %>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="valor" class="form-label">Valor (R$)</label>
+        <input type="number" step="0.01" name="valor" id="valor" class="form-control" required>
+      </div>
+
+      <button type="submit" class="btn btn-success">Cadastrar</button>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
+
