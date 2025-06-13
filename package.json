@@ -5,8 +5,12 @@
     "dotenv": "^16.5.0",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
+<<<<<<< HEAD
     "express-session": "^1.18.1",
     "mongoose": "^8.14.0"
+=======
+    "mongoose": "^8.13.2"
+>>>>>>> c20d14fd5938f6f15859c236dd98a10466547130
   },
   "name": "projeto-pn",
   "version": "1.0.0",
