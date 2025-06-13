@@ -12,14 +12,22 @@
   <div class="container mt-5">
     <h1 class="mb-4">Ingressos Cadastrados</h1>
 
+      <% if (removido) { %>
+        <div class="alert alert-success">
+          Ingresso removido com sucesso!
+        </div>
+      <% } %>
+
     <% if (ingressos.length > 0) { %>
-    <table class="table table-bordered">
+    <table class="table table-striped table-bordered">
     <thead class="table-dark">
         <tr>
         <th>Cliente</th>
         <th>Evento</th>
         <th>Valor</th>
-        <th>Informaçoes Completas</th>
+        <th>Detalhes</th>
+        <th>Remover</th>
+        <th>Atualizar</th>
         </tr>
     </thead>
     <tbody>
@@ -30,6 +38,12 @@
             <td>R$ <%= ingresso.valor.toFixed(2) %></td>
             <td>
             <a href="/ingressos/detalhar/<%= ingresso._id %>" class="btn btn-primary btn-sm">Detalhar</a>
+            </td>
+            <td>
+            <a class="btn btn-danger btn-sm" href="/ingressos/remover/<%= ingresso._id %>" onclick="return confirm('Tem certeza que deseja remover este ingresso?')">Remover</a>
+            </td>
+            <td>
+            <a class="btn btn-warning btn-sm" href="/ingressos/atualizar/<%= ingresso._id %>">Atualizar</a>
             </td>
         </tr>
         <% }); %>

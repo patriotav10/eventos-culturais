@@ -12,6 +12,13 @@
 
 <body>
   <div class="container mt-5">
+
+      <% if (removido) { %>
+        <div class="alert alert-success">
+          Evento removido com sucesso!
+        </div>
+      <% } %>
+
     <h1 class="mb-4">Eventos Cadastros</h1>
 
     <table class="table table-striped table-bordered">
@@ -20,17 +27,26 @@
           <th>Nome</th>
           <th>Data</th>
           <th>Local</th>
-          <th>Informaçoes Completas</th>
+          <th>Detalhes</th>
+          <th>Remover</th>
+          <th>Atualizar</th>
         </tr>
       </thead>
       <tbody>
         <% eventos.forEach(evento => { %>
           <tr>
             <td><%= evento.nome %></td>
-            <td><%= evento.data %></td>
+            <td><%= new Date(evento.data).toLocaleDateString('pt-BR') %></td>
             <td><%= evento.local %></td>
+
             <td>
-                <a class="btn btn-sm btn-primary" href="/eventos/detalhar/<%= evento._id %>">Detalhar</a>
+              <a class="btn btn-sm btn-primary" href="/eventos/detalhar/<%= evento._id %>">Detalhar</a>
+            </td>
+            <td>
+              <a class="btn btn-danger btn-sm" href="/eventos/remover/<%= evento._id %>" onclick="return confirm('Tem certeza que deseja remover este evento?')">Remover</a>
+            </td>
+            <td>
+               <a href="/eventos/atualizar/<%= evento._id %>" class="btn btn-sm btn-warning">Atualizar</a>
             </td>
           </tr>
         <% }) %>

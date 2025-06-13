@@ -1,43 +1,64 @@
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/">Eventos Culturais</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="menuNav">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<% if (usuario) { %>
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">Eventos Culturais</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menuNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="menuCliente" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Clientes
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="menuCliente">
-            <li><a class="dropdown-item" href="/clientes/relatorio">Relatório</a></li>
-            <li><a class="dropdown-item" href="/clientes/cadastrar">Cadastrar</a></li>
-          </ul>
-        </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="menuCliente" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Clientes
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="menuCliente">
+              <li><a class="dropdown-item" href="/clientes/relatorio">Relatório</a></li>
+              <li><a class="dropdown-item" href="/clientes/cadastrar">Cadastrar</a></li>
+            </ul>
+          </li>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="menuEvento" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Eventos
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="menuEvento">
-            <li><a class="dropdown-item" href="/eventos/relatorio">Relatório</a></li>
-            <li><a class="dropdown-item" href="/eventos/cadastrar">Cadastrar</a></li>
-          </ul>
-        </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="menuEvento" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Eventos
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="menuEvento">
+              <li><a class="dropdown-item" href="/eventos/relatorio">Relatório</a></li>
+              <li><a class="dropdown-item" href="/eventos/cadastrar">Cadastrar</a></li>
+            </ul>
+          </li>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="menuIngresso" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Ingressos
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="menuIngresso">
-            <li><a class="dropdown-item" href="/ingressos/relatorio">Relatório</a></li>
-            <li><a class="dropdown-item" href="/ingressos/cadastrar">Cadastrar</a></li>
-          </ul>
-        </li>
-      </ul>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="menuIngresso" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Ingressos
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="menuIngresso">
+              <li><a class="dropdown-item" href="/ingressos/relatorio">Relatório</a></li>
+              <li><a class="dropdown-item" href="/ingressos/cadastrar">Cadastrar</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="menuUsuario" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Usuários
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="menuUsuario">
+              <li><a class="dropdown-item" href="/usuarios/relatorio">Relatório</a></li>
+              <li><a class="dropdown-item" href="/usuarios/cadastrar">Cadastrar</a></li>
+            </ul>
+          </li>
+
+        </ul>
+
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link text-danger" href="/usuarios/logout">Sair</a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
+<% } %>
+
+
 

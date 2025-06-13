@@ -1,4 +1,4 @@
-<%- include("partials/menu") %>
+<%- include("../partials/menu") %>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -6,16 +6,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Eventos Culturais</title>
+  <title>Detalhes do Usuário</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
-  <div class="container text-center mt-5">
-    <h1>Bem-vindo ao Sistema de Eventos Culturais</h1>
-    <p>Use o menu acima para acessar os cadastros e relatorios de Clientes, Usuarios, Eventos e Ingressos.</p>
+
+  <div class="container mt-5">
+    <h2 class="mb-4">Detalhes do Usuário</h2>
+
+    <ul class="list-group">
+      <li class="list-group-item"><strong>Nome:</strong> <%= usuario.nome %></li>
+      <li class="list-group-item"><strong>E-mail:</strong> <%= usuario.email %></li>
+    </ul>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

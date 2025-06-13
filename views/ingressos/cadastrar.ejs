@@ -6,52 +6,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cadastrar Ingresso</title>
+  <title><%= ingresso ? "Atualizar Ingresso" : "Cadastrar Ingresso" %></title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
 
   <div class="container mt-5">
-    <h2 class="mb-4">Cadastro do Ingresso</h2>
+    <h2 class="mb-4"><%= ingresso ? "Atualizar Ingresso" : "Cadastro de Ingresso" %></h2>
 
     <% if (sucesso) { %>
       <div class="alert alert-success">
-        Ingresso cadastrado com sucesso!
+        <%= ingresso ? "Ingresso atualizado com sucesso!" : "Ingresso cadastrado com sucesso!" %>
       </div>
     <% } %>
 
-    <form action="/ingressos" method="POST">
+    <form action="/ingressos/cadastrar" method="POST">
+      <input type="hidden" name="_id" value="<%= ingresso ? ingresso._id : '' %>">
+
       <div class="mb-3">
         <label for="cliente" class="form-label">Cliente</label>
-        <select name="cliente" id="cliente" class="form-select" required>
+        <select name="cliente" id="cliente" class="form-select" required <%= ingresso ? "disabled" : "" %>>
           <% clientes.forEach(cliente => { %>
-            <option value="<%= cliente._id %>">Nome: <%= cliente.nome %> - CPF: <%= cliente.cpf %></option>
+            <option value="<%= cliente._id %>" 
+              <%= (ingresso && ingresso.cliente && ingresso.cliente._id.toString() === cliente._id.toString()) ? "selected" : "" %>>
+              Nome: <%= cliente.nome %> - CPF: <%= cliente.cpf %>
+            </option>
           <% }) %>
         </select>
+        <% if (ingresso && ingresso.cliente) { %>
+          <input type="hidden" name="cliente" value="<%= ingresso.cliente._id %>">
+        <% } %>
+
       </div>
 
       <div class="mb-3">
         <label for="evento" class="form-label">Evento</label>
-        <select name="evento" id="evento" class="form-select" required>
+        <select name="evento" id="evento" class="form-select" required <%= ingresso ? "disabled" : "" %>>
           <% eventos.forEach(evento => { %>
-            <option value="<%= evento._id %>">Nome: <%= evento.nome %> - Local: <%= evento.local %></option>
+            <option value="<%= evento._id %>" 
+              <%= (ingresso && ingresso.evento && ingresso.evento._id.toString() === evento._id.toString()) ? "selected" : "" %>>
+              Nome: <%= evento.nome %> - Local: <%= evento.local %>
+            </option>
           <% }) %>
         </select>
+        <% if (ingresso && ingresso.evento) { %>
+          <input type="hidden" name="evento" value="<%= ingresso.evento._id %>">
+        <% } %>
+
       </div>
 
       <div class="mb-3">
         <label for="valor" class="form-label">Valor (R$)</label>
-        <input type="number" step="0.01" name="valor" id="valor" class="form-control" required>
+        <input type="number" step="0.01" name="valor" id="valor" class="form-control" value="<%= ingresso ? ingresso.valor : '' %>" required>
       </div>
 
-      <button type="submit" class="btn btn-success">Cadastrar</button>
+      <button type="submit" class="btn btn-success">
+        <%= ingresso ? "Atualizar" : "Cadastrar" %>
+      </button>
     </form>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+
 
 
 

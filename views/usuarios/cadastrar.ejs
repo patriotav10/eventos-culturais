@@ -1,0 +1,60 @@
+<%- include("../partials/menu") %>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= usuario ? "Atualizar Usuário" : "Cadastrar Usuário" %></title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="container mt-5">
+    <h2 class="mb-4"><%= usuario ? "Atualizar Usuário" : "Cadastro de Usuário" %></h2>
+
+    <% if (sucesso) { %>
+      <div class="alert alert-success">
+        <%= usuario ? "Usuário atualizado com sucesso!" : "Usuário cadastrado com sucesso!" %>
+      </div>
+    <% } %>
+
+    <% if (erro) { %>
+      <div class="alert alert-danger">
+        <%= erro %>
+      </div>
+    <% } %>
+
+
+    <form action="/usuarios/cadastrar" method="POST">
+
+      <input type="hidden" name="_id" value="<%= usuario ? usuario._id : '' %>">
+
+      <div class="mb-3">
+        <label for="nome" class="form-label">Nome</label>
+        <input type="text" name="nome" id="nome" class="form-control"
+        value="<%= usuario ? usuario.nome : '' %>"<%= usuario ? "readonly" : "" %> required>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">E-mail</label>
+        <input type="email" name="email" id="email" class="form-control"
+        value="<%= usuario ? usuario.email : '' %>"<%= usuario ? "readonly" : "" %> required>
+      </div>
+
+      <div class="mb-3">
+        <label for="senha" class="form-label"><%= usuario ? "Nova Senha" : "Senha" %></label>
+        <input type="password" name="senha" id="senha" class="form-control" required>
+      </div>
+
+      <button type="submit" class="btn btn-success">
+        <%= usuario ? "Atualizar" : "Cadastrar" %>
+      </button>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
