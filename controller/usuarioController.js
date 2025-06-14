@@ -45,10 +45,6 @@ class UsuarioController {
     static async cadastrarPost(req, res) {
         const { _id, nome, email, senha } = req.body;
 
-        if (req.session.usuario) {
-            return res.redirect("/");
-        }
-
         try {
 
             if (_id) {
@@ -64,6 +60,10 @@ class UsuarioController {
                 await Usuario.findByIdAndUpdate(_id, { senha: hash });
 
                 return res.render("usuarios/cadastrar", { usuario, sucesso: true, erro: false  });
+            }
+
+            if (req.session.usuario) {
+                return res.redirect("/");
             }
 
             const existe = await Usuario.findOne({ email });
